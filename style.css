@@ -1,0 +1,16 @@
+.Mobile {
+    border: 1px solid;
+    width: 300px;
+    text-align: center;
+    display: inline-block;
+}
+
+textarea {
+    height: 90px;
+}
+
+input {
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}

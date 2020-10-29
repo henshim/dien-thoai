@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>may nhan tin</title>
+    <script src="mobile.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="Mobile">
+    <h1 id="iphone-name">Iphone</h1>
+    <textarea disabled id="iphone-inbox" cols="30" rows="10" placeholder="Inbox"></textarea>
+    <textarea disabled id="iphone-outbox" cols="30" rows="10" placeholder="Outbox"></textarea>
+    <input type="text" id="iphone-msg" oninput="writeMess(iphone,this.value)" placeholder="write message here...">
+    <button id="iphone-btn" onclick="sendMess(iphone,nokia)">Send</button>
+</div>
+
+<div class="Mobile">
+    <h1 id="nokia-name">Nokia</h1>
+    <textarea disabled id="nokia-inbox" cols="30" rows="10" placeholder="Inbox"></textarea>
+    <textarea disabled id="nokia-outbox" cols="30" rows="10" placeholder="Outbox"></textarea>
+    <input type="text" oninput="writeMess(nokia,this.value)" id="nokia-msg" placeholder="write message here...">
+    <button id="nokia-btn" onclick="sendMess(nokia,iphone)">Send</button>
+</div>
+<script>
+    let iphone = new Mobile("Iphone Max Pro", 'iphone');
+    let nokia = new Mobile("Nokia Pro", 'nokia');
+
+    function sendMess(mobile1, mobile2) {
+        mobile1.sendMsg(mobile2);
+        showMobile();
+        clearInput(mobile1);
+    }
+
+    function writeMess(mobile, msg) {
+        mobile.writeMsg(msg);
+    }
+
+    function display(mobile) {
+        document.getElementById(mobile.id + '-name').innerHTML = mobile.name;
+        document.getElementById(mobile.id + '-inbox').innerHTML = mobile.inbox;
+        document.getElementById(mobile.id + '-outbox').innerHTML = mobile.outbox;
+    }
+
+
+    function showMobile() {
+        display(iphone);
+        display(nokia);
+    }
+
+    function clearInput(mobile) {
+        document.getElementById(mobile.id + "-msg").value = "";
+    }
+
+    showMobile();
+</script>
+</body>
+</html>
